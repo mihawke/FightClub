@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(int amount)
     {
         _currentHealth -= amount;
-
+        Debug.Log(gameObject.name + "health :" + _currentHealth);
         // The ?. means "Only broadcast if someone is actually listening"
         OnTakeDamage?.Invoke();
 
