@@ -15,13 +15,19 @@ public class Health : MonoBehaviour
     public void TakeDamage(int amount)
     {
         _currentHealth -= amount;
-        Debug.Log(gameObject.name + "health :" + _currentHealth);
+        Debug.Log("health :" + _currentHealth);
+        
         // The ?. means "Only broadcast if someone is actually listening"
         OnTakeDamage?.Invoke();
 
         if (_currentHealth <= 0)
         {
             OnDeath?.Invoke();
+            Die();
         }
+    }
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

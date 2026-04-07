@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -29,7 +28,7 @@ public class PlayerInput : MonoBehaviour
     }
 
     //runs every frame
-    private void OnUpdate()
+    private void Update()
     {
         MoveInput = _actions.Player.Move.ReadValue<Vector2>();
         AttackPressed = _actions.Player.Attack.WasPressedThisFrame();

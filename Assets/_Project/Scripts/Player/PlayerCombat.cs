@@ -20,7 +20,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (_input.AttackPressed && !_isAttacking)
         {
-
+            StartAttack();
         }
     }
 
