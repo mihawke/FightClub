@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour
 
     void Awake()
     {
-        // We create a new "instance" of our control map.
+        //create a new instance of our actions
         _actions = new PlayerInputActions();
     }
 

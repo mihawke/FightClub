@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Rigidbody2D _rb;
+    [SerializeField] private GameObject _player;
+
+    private void Awake()
     {
-        
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        transform.position = Vector2.MoveTowards(this.transform.position, _player.transform.position, 2f * Time.deltaTime);
     }
+
 }

@@ -1,28 +1,28 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 100;
+    private Knockback _knockback;
+
     private int _currentHealth;
 
-    // Defining events
-    public UnityEvent OnTakeDamage;
-    public UnityEvent OnDeath;
-
-    private void Awake() => _currentHealth = _maxHealth;
+    private void Awake()
+    {
+        _currentHealth = _maxHealth;
+        _knockback = GetComponent<Knockback>();
+    }
 
     public void TakeDamage(int amount)
     {
         _currentHealth -= amount;
+        _knockback.ApplyKnockback(50f);
+
         Debug.Log("health :" + _currentHealth);
-        
-        // The ?. means "Only broadcast if someone is actually listening"
-        OnTakeDamage?.Invoke();
+
 
         if (_currentHealth <= 0)
         {
-            OnDeath?.Invoke();
             Die();
         }
     }
@@ -30,4 +30,5 @@ public class Health : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }

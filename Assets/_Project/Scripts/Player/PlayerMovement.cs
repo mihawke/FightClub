@@ -31,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
         _facingRight = !_facingRight;
 
         // Flip the entire Player object along x-axis
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        Vector3 currentScale = transform.localScale;
+        currentScale.x *= -1;
+        transform.localScale = currentScale;
     }
+
 }
